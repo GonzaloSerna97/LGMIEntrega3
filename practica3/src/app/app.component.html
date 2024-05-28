@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark bg-dark justify-content-center">
+    <a class="navbar-brand" style="text-align: center;" href="">
+        Ciudades visitadas
+    </a>
+</nav>
+<ul class="nav nav-tabs bg-dark">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://www.viajeroscallejeros.com/ciudades-de-espana/" target="_blank">Posibles Destinos españoles</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="https://www.viajeroscallejeros.com/ciudades-visitar-europa-imprescindibles/" target="_blank">Posibles Destinos europeos</a>
+    </li>
+  </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-4">
+            <ul class="list-group">
+                <li *ngFor="let ciudad of ciudadArray" class="list-group-item list-group-item-action" (click)="editar(ciudad)" [class.active]="ciudad == ciudadSeleccionada">
+                    {{ ciudad.nombre }} - {{ ciudad.pais }}
+                    
+                </li>
+            </ul>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <div class="card-title">
+                        Inserta una nueva ciudad
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="ciudadSeleccionada.nombre" placeholder="Inserta una ciudad" class="form-control">
+                    </div>
+                    <div class="card-title">
+                        Inserta un país
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="ciudadSeleccionada.pais" placeholder="Inserta un pais" class="form-control">
+                    </div>
+                </div>
+                <button (click)="agregarOeditar()" class="btn btn-primary">
+                    Enviar
+                </button>
+                <button class="btn btn-danger" *ngIf="ciudadSeleccionada.id !== 0" (click)="eliminar()">
+                    Eliminar
+                </button>
+            </div>
+          
+            
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
